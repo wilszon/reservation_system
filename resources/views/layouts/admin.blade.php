@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title', 'Panel de Usuario')</title>
+    <title>@yield('title', 'Panel de Admin')</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,59 +18,64 @@
 <body>
     <div id="app">
 
-        {{-- NAVBAR DEL USUARIO --}}
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        {{-- NAVBAR DEL ADMIN --}}
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
-                    📚 Sistema de Reservas — Usuario
+                <a class="navbar-brand" href="{{ route('admin.books.index') }}">
+                    🛠️ Sistema de Reservas — Admin
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser"
-                    aria-controls="navbarUser" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarUser">
+                <div class="collapse navbar-collapse" id="navbarAdmin">
 
                     {{-- LINKS IZQUIERDA --}}
                     <ul class="navbar-nav me-auto">
+                        
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('admin.books.index') }}">📚 Libros</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Mis Reservas</a>
+                            <a class="nav-link" href="#">👥 Usuarios</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('catalog') }}">Catálogo</a>
+                            <a class="nav-link" href="#">📖 Reservas</a>
                         </li>
+
                     </ul>
 
-                    {{-- LINKS DERECHA (AUTH) --}}
+                    {{-- LINKS DERECHA --}}
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Cerrar sesión
-                                </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                <li>
+                                    <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Cerrar sesión
+                                    </a>
+                                </li>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
+
+                            </ul>
                         </li>
 
                     </ul>
 
                 </div>
+
             </div>
         </nav>
 
