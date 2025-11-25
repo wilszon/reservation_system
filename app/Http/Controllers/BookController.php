@@ -10,20 +10,26 @@ class BookController extends Controller
     // CATALOGO PUBLICO
     public function index()
     {
-        $books = Book::all();  
+        $books = Book::all();
 
         return view('guest.catalog.index', compact('books'));
     }
 
 
     // CATALOGO USUARIO AUTENTICADO
-    public function userCatalog(){
-        $books = Book::all();  
+    public function userCatalog()
+    {
+        $books = Book::all();
 
-        return view('user.catalog', compact('books'));
+        $userReservations = auth()->user()
+            ->reservations()
+            ->pluck('book_id')
+            ->toArray();
+
+        return view('user.catalog', compact('books', 'userReservations'));
     }
 
-   
+
     // ADMIN — LISTAR LIBROS
     public function adminIndex()
     {
@@ -31,14 +37,14 @@ class BookController extends Controller
         return view('admin.books.index', compact('books'));
     }
 
- 
+
     // ADMIN — MOSTRAR FORMULARIO DE CREACIÓN
     public function create()
     {
         return view('admin.books.create');
     }
 
-  
+
     // ADMIN — GUARDAR LIBRO NUEVO
     public function store(Request $request)
     {
@@ -71,7 +77,7 @@ class BookController extends Controller
         return view('admin.books.edit', compact('book'));
     }
 
- 
+
     // ADMIN — ACTUALIZAR LIBRO
     public function update(Request $request, Book $book)
     {
@@ -97,7 +103,7 @@ class BookController extends Controller
         return redirect()->route('admin.books.index')->with('success', 'Libro actualizado.');
     }
 
- 
+
     // ADMIN — ELIMINAR LIBRO
     public function destroy(Book $book)
     {

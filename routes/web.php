@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('guest.home');
@@ -21,6 +22,18 @@ Route::middleware(['auth'])->group(function () {
     })->name('user.dashboard');
 
     Route::get('/user/catalog', [BookController::class, 'userCatalog'])->name('user.catalog');
+
+
+    Route::post('/reserve/{book}', [ReservationController::class, 'store'])
+        ->name('reserve.book');
+
+
+    Route::post('/reserve/{book}/cancel', [ReservationController::class, 'cancel'])
+        ->name('reserve.cancel');
+
+
+    Route::get('/user/reservations', [ReservationController::class, 'userReservations'])
+        ->name('user.reservations');
 });
 
 // DASHBOARD DEL ADMIN
@@ -35,4 +48,14 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', AdminMiddleware::cla
     Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
+
+
+    // RUTAS DE RESERVAS
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+
+    Route::post('/reservations/{id}/approve', [ReservationController::class, 'approve'])
+        ->name('reservations.approve');
+
+    Route::post('/reservations/{id}/reject', [ReservationController::class, 'reject'])
+        ->name('reservations.reject');
 });

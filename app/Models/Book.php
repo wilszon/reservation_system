@@ -18,4 +18,10 @@ class Book extends Model
         'cover_image',
         'quantity',
     ];
+
+
+    public function reservations()
+    {
+        return $this->hasMany(\App\Models\Reservation::class);
+    }
 }

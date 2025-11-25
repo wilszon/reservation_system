@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <a href="#" class="btn btn-success w-100">
+                            <a href="{{ route('user.reservations') }}" class="btn btn-success w-100">
                                 📖 Mis Reservas
                             </a>
                         </div>

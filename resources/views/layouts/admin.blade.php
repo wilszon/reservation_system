@@ -39,7 +39,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">📖 Reservas</a>
+                            <a class="nav-link" href="{{ route('admin.reservations.index') }}">📖 Reservas</a>
                         </li>
 
                     </ul>
