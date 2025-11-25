@@ -5,16 +5,15 @@
 @section('content')
 
 <!-- HERO PRINCIPAL -->
-<div class="container mt-4">
-    <div class="p-5 text-center bg-light rounded-3 shadow-sm">
-        <h1 class="display-5 fw-bold">Bienvenido a Mi Biblioteca</h1>
+<div class="container-fluid ">
+     <div class="p-5 text-center rounded-3 shadow-sm hero-gradient">
+        <h1 class="display-5 fw-bold">Descubre y Reserva tus libros Favoritos</h1>
         <p class="lead mt-3">
-            Reserva libros fácilmente y gestiona tus préstamos desde un solo lugar.
+            La forma más fácil de reservar libros y gestionar tus préstamos desde un solo lugar.
         </p>
-
         <div class="mt-4">
-            <a href="{{ route('catalog') }}" class="btn btn-primary btn-lg me-2">Ver catálogo</a>
-            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg">Iniciar sesión</a>
+            <a href="{{ route('catalog') }}" class="btn btn-success btn-lg me-2">Explorar Catálogo</a>
+            <a href="{{ route('register') }}" class="btn btn-outline-primary btn-lg">Crear Cuenta</a>
         </div>
     </div>
 </div>
@@ -22,7 +21,6 @@
 <!-- SECCIÓN DE BENEFICIOS -->
 <div class="container mt-5">
     <h2 class="text-center mb-4">¿Qué ofrecemos?</h2>
-
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card shadow-sm h-100">

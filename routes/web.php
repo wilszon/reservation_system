@@ -7,7 +7,7 @@ use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('guest.home');
-});
+})->name('home');
 
 //LOGIN/REGISTER LARAVELUI
 Auth::routes();

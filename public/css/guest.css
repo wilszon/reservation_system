@@ -1,0 +1,77 @@
+.navbar-guest {
+ background-color: #e9ecef !important; 
+}
+
+
+.book-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    border-color: #0d6efd;
+}
+
+.book-cover {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.login-btn:hover {
+    background-color: #4b0e84 !important;
+    /* verde Bootstrap */
+    color: #ffffff !important;
+    /* blanco */
+    border-color: #4b0e84 !important;
+    /* borde verde */
+}
+
+/* HERO con degradado */
+.hero-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    border-radius: 20px;
+    padding: 4rem 2rem;
+}
+
+/* Título */
+.hero-gradient h1 {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+
+.hero-gradient p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Botones del hero */
+.hero-gradient .btn-lg {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+}
+
+/* Sombra suave */
+.hero-shadow {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Footer con degradado */
+.footer-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    color: #ffffff;
+}
+
+.footer-gradient p {
+    margin: 0;
+    font-weight: bold;
+    color: #ffffff;
+}
