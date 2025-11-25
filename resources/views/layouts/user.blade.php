@@ -21,7 +21,7 @@
         {{-- NAVBAR DEL USUARIO --}}
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                     📚 Sistema de Reservas — Usuario
                 </a>
 
@@ -35,7 +35,7 @@
                     {{-- LINKS IZQUIERDA --}}
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
                         </li>
 
                         <li class="nav-item">
