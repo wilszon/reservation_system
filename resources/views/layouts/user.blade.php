@@ -5,9 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Panel de Usuario')</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/wlogo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <style>
+        .book-card {
+            transition: transform .2s ease, box-shadow .2s ease;
+            cursor: pointer;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border-color: #0d6efd;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +59,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('catalog') }}">Catálogo</a>
+                            <a class="nav-link" href="{{ route('user.catalog') }}">Catálogo</a>
                         </li>
                     </ul>
 

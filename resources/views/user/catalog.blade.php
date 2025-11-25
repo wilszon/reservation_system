@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.user')
 
 @section('title', 'Catálogo de Libros')
 
@@ -27,6 +27,12 @@
 
                             <span class="badge bg-primary">{{ $book->category ?? 'General' }}</span>
                             <span class="badge bg-success">📦 {{ $book->quantity }} disponibles</span>
+
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-outline-primary w-100">
+                                    Reservar 📖
+                                </a>
+                            </div>
                         </div>
 
                     </div>

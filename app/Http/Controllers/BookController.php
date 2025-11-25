@@ -15,6 +15,14 @@ class BookController extends Controller
         return view('guest.catalog.index', compact('books'));
     }
 
+
+    // CATALOGO USUARIO AUTENTICADO
+    public function userCatalog(){
+        $books = Book::all();  
+
+        return view('user.catalog', compact('books'));
+    }
+
    
     // ADMIN — LISTAR LIBROS
     public function adminIndex()

@@ -24,7 +24,7 @@
                     <div class="row text-center">
 
                         <div class="col-md-4 mb-3">
-                            <a href="{{ route('catalog') }}" class="btn btn-primary w-100">
+                            <a href="{{ route('user.catalog') }}" class="btn btn-primary w-100">
                                 📚 Ver Catálogo
                             </a>
                         </div>

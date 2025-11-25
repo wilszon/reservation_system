@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', function () {
         return view('user.dashboard');
     })->name('user.dashboard');
+
+    Route::get('/user/catalog', [BookController::class, 'userCatalog'])->name('user.catalog');
 });
 
 // DASHBOARD DEL ADMIN
