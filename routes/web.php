@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -9,20 +8,20 @@ Route::get('/', function () {
     return view('guest.home');
 });
 
-// Login/Register con Laravel UI
+//LOGIN/REGISTER LARAVELUI
 Auth::routes();
 
-// Catálogo público
+// CATALOGO PUBLICO
 Route::get('/catalog', [BookController::class, 'index'])->name('catalog');
 
-// Dashboard usuario
+// DASHBOARD DEL USER
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', function () {
         return view('user.dashboard');
     })->name('user.dashboard');
 });
 
-// Dashboard administrador
+// DASHBOARD DEL ADMIN
 Route::prefix('admin')->name('admin.')->middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');

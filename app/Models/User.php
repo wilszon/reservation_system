@@ -32,7 +32,7 @@ class User extends Authenticatable
         ];
     }
 
-    // 🔥 Mantener compatibilidad con Auth::user()->name
+    // Mantiene Compatibilidad porque la autenticación solo recibe name y yo puse first_name y last_name, Auth::user()->name
     public function getNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";

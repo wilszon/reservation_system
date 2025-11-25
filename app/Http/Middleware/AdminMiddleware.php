@@ -14,6 +14,7 @@ class AdminMiddleware
             return $next($request);
         }
 
-        abort(403); // o redirect('/'); si quieres mandar al home
+        abort(403); //abort() es un helper de Laravel que detiene inmediatamente 
+        //la ejecución de la petición El número 403 es un código de estado HTTP que significa "Forbidden" (Prohibido).
     }
 }
