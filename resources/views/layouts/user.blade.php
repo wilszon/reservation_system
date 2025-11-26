@@ -42,8 +42,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end shadow">
-                                <a class="dropdown-item" href="{{ route('user.profile.edit') }}">Mi Perfil</a>
-
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button class="dropdown-item text-danger">Cerrar Sesión</button>
