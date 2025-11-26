@@ -51,3 +51,9 @@
     background: transparent !important;
     color: white !important;
 }
+
+.btn-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    border: none;
+    color: white;
+}

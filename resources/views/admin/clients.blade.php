@@ -13,7 +13,7 @@
             <input type="text" name="search" id="searchInput" class="form-control"
                    placeholder="Buscar usuario por nombre o email..."
                    value="{{ $search }}">
-            <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+            <button class="btn btn-gradient"><i class="bi bi-search"></i></button>
         </div>
     </form>
 
