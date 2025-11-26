@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">📚 Gestión de Libros</h1>
+    <h2 class="mb-4">📚 Gestión de Libros</h2>
     
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>

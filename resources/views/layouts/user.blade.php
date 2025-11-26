@@ -10,86 +10,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <style>
-        .book-card {
-            transition: transform .2s ease, box-shadow .2s ease;
-            cursor: pointer;
-        }
-
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-            border-color: #0d6efd;
-        }
-
-        .book-cover {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-    </style>
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
 
         {{-- NAVBAR DEL USUARIO --}}
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('user.dashboard') }}">
-                    📚 Sistema de Reservas — Usuario
+        <nav class="navbar navbar-expand-md shadow-sm user-navbar">
+            <div class="container d-flex justify-content-between align-items-center">
+
+                <!-- IZQUIERDA (LOGO) -->
+                <a class="navbar-brand fw-bold text-white me-4" href="{{ route('user.dashboard') }}">
+                    <i class="bi bi-book-half"></i> BookReserve
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser"
-                    aria-controls="navbarUser" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <!-- TOGGLER PARA MÓVIL -->
+                <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarUser" aria-controls="navbarUser" aria-expanded="false">
+                    <i class="bi bi-list text-white fs-1"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarUser">
 
-                    {{-- LINKS IZQUIERDA --}}
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Mis Reservas</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.catalog') }}">Catálogo</a>
-                        </li>
-                    </ul>
-
-                    {{-- LINKS DERECHA (AUTH) --}}
+                    <!-- DERECHA (USUARIO) -->
                     <ul class="navbar-nav ms-auto">
-
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Cerrar sesión
-                                </a>
+                            <div class="dropdown-menu dropdown-menu-end shadow">
+                                <a class="dropdown-item" href="{{ route('user.profile.edit') }}">Mi Perfil</a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
+                                    <button class="dropdown-item text-danger">Cerrar Sesión</button>
                                 </form>
                             </div>
                         </li>
-
                     </ul>
 
                 </div>
             </div>
         </nav>
+
+
 
         {{-- CONTENIDO --}}
         <main class="py-4">
@@ -99,7 +66,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="{{ asset('js/buscarLibros.js') }}"></script>
 </body>
 
 </html>

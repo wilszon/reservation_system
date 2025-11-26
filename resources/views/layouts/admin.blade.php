@@ -25,6 +25,12 @@
                     </div>
 
                     <div>
+                        <a href="{{ route('admin.dashboard') }}">
+                            <i class="bi bi-speedometer2"></i>
+                            <p>Resumen</p>
+                        </a>
+
+                        
                         <a href="{{ route('admin.reservations.index') }}">
                             <i class="bi bi-clipboard2-data"></i>
                             <p>Solicitudes</p>

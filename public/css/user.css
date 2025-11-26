@@ -1,0 +1,141 @@
+.user-navbar {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+}
+
+.user-navbar .nav-link {
+    font-weight: 500;
+    transition: 0.2s ease-in-out;
+}
+
+.user-navbar .nav-link:hover {
+    opacity: 0.8;
+}
+
+.center-nav {
+    flex: 1;
+    justify-content: center;
+}
+
+.navbar-nav.mx-auto {
+    display: flex;
+    align-items: center;
+}
+
+/* Subrayado suave en los enlaces del centro */
+.center-nav .nav-link {
+    position: relative;
+}
+
+.center-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px; /* separación con el texto */
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.center-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* NAVBAR GRADIENT */
+.user-navbar {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+}
+
+.user-navbar .nav-link {
+    font-weight: 500;
+    transition: 0.2s ease-in-out;
+}
+
+/* Asegurar centrado */
+.center-nav {
+    flex: 1;
+    justify-content: center;
+}
+
+.navbar-nav.mx-auto {
+    display: flex;
+    align-items: center;
+}
+
+
+/* 🔥 SUBRAYADO ANIMADO SOLO EN LOS LINKS DEL CENTRO 🔥 */
+.center-link {
+    position: relative;
+    padding-bottom: 4px; /* para que el subrayado no choque con el texto */
+}
+
+.center-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0px; 
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.center-link:hover::after,
+.center-link.active::after {
+    width: 100%;
+}
+
+
+.book-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    border-color: #0d6efd;
+}
+
+.book-cover {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    color: #fff;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #78155d, #4b0e84);
+    color: #fff;
+}
+
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    color: #fff;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #78155d, #4b0e84);
+    color: #fff;
+}

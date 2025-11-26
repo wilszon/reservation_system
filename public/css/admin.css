@@ -57,3 +57,36 @@
     border: none;
     color: white;
 }
+
+.section-title-black {
+    color: #222;
+    font-weight: bold;
+}
+
+.metric-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-icon {
+    font-size: 40px;
+    color: #6f42c1; /* púrpura elegante */
+}
+
+.metric-number {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #777;
+}
+
+.table-header-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+}
