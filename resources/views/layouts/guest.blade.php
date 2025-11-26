@@ -42,7 +42,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-light text-center py-3 mt-5 border-top footer-gradient">
+    <footer class="bg-light text-center py-3 mt-5 border-top footer-gradient fixed-bottom">
         <p class="mb-0">© {{ date('Y') }} BookReserve – Desarrollado por Wilson Suarez</p>
     </footer>
 

@@ -15,20 +15,20 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('images/wlogo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
         {{-- NAVBAR PRINCIPAL --}}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm navbar-app">
             <div class="container py-2">
 
                 {{-- Logo / Nombre --}}
                 <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="{{ url('/') }}">
                     <i class="bi bi-book-half me-2"></i>
-                    Librería
+                    BookReserve
                 </a>
 
                 {{-- Toggle mobile --}}
@@ -43,12 +43,12 @@
 
                         @guest
                             <li class="nav-item">
-                                <a class="btn btn-light px-3" href="{{ route('login') }}">
+                                <a class="btn btn-outline-light px-3 ms-2" href="{{ route('login') }}">
                                     Iniciar Sesión
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-outline-light px-3" href="{{ route('register') }}">
+                                <a class="btn btn-outline-light px-3 ms-2" href="{{ route('register') }}">
                                     Registrarse
                                 </a>
                             </li>
@@ -83,18 +83,9 @@
         </nav>
 
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
-
-        <!-- Footer -->
-        <footer class="bg-dark text-center text-white py-3 mt-5">
-            <div class="container">
-                <p class="mb-1">Librería — Todos los derechos reservados © 2025</p>
-                <small class="text-muted">Wilson Andres Suarez Mantilla</small>
-            </div>
-        </footer>
-
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

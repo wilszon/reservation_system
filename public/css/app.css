@@ -1,0 +1,81 @@
+/* Fondo blanco del body */
+body {
+    background-color: #ffffff;
+}
+
+/* Navbar con gradiente morado */
+.navbar-app {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+}
+
+/* Card general */
+.login-card {
+    background: #f6eefc; /* lila MUY claro, se ve bonito */
+    border-radius: 20px !important;
+    border: 1px solid #e2cffe !important;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Header del login con EL MISMO degradado que el navbar */
+.login-header {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    color: white;
+    border-radius: 20px 20px 0 0 !important;
+}
+
+
+/* Etiquetas del formulario más visibles */
+.form-label {
+    color: #4b0e84;
+    font-weight: 600;
+}
+
+/* Inputs */
+.form-control-lg {
+    border-radius: 12px;
+    border: 1px solid #c9b3e6;
+}
+
+/* Botón degradado */
+.btn-gradient {
+    background: linear-gradient(135deg, #4b0e84, #78155d);
+    border: none;
+    color: white;
+}
+
+.btn-gradient:hover {
+    opacity: 0.85;
+}
+
+/* Link de olvidar contraseña más visible */
+.login-card a {
+    color: #4b0e84 !important;
+    font-weight: 500;
+}
+
+/* Color consistente para títulos pequeños (labels, links) */
+.text-purple-soft {
+    color: #6a3ea1 !important; /* Morado bonito y suave */
+    font-weight: 500;
+}
+
+/* Inputs sin borde fuerte y con color consistente */
+.form-control-lg {
+    border-radius: 12px;
+    border: 1px solid #d7c5ef !important;
+    background-color: #ffffff;
+    color: #4b0e84; /* Texto dentro del input */
+}
+
+.form-control-lg:focus {
+    border-color: #b08add !important;
+    box-shadow: 0 0 0 0.2rem rgba(176, 138, 221, 0.25);
+}
+
+/* Quitar delineado feo del link */
+.no-outline {
+    text-decoration: none !important;
+}
+.no-outline:hover {
+    text-decoration: underline !important;
+}
