@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ClientController;
 
 Route::get('/', function () {
     return view('guest.home');
@@ -58,4 +59,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', AdminMiddleware::cla
 
     Route::post('/reservations/{id}/reject', [ReservationController::class, 'reject'])
         ->name('reservations.reject');
+
+    Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 });

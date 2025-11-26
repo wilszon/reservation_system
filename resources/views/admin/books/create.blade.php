@@ -3,59 +3,68 @@
 @section('title', 'Agregar Libro')
 
 @section('content')
-<div class="container">
-    <h1 class="mb-4">➕ Agregar Libro</h1>
+<div class="container py-4">
 
-    <div class="card shadow-sm">
-        <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">➕ Agregar Libro</h1>
+        <a href="{{ route('admin.books.index') }}" class="btn btn-outline-secondary">⬅ Volver</a>
+    </div>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 900px;">
+        <div class="card-body p-4">
 
             <form action="{{ route('admin.books.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                {{-- Título --}}
-                <div class="mb-3">
-                    <label class="form-label">Título</label>
-                    <input type="text" name="title" class="form-control" required>
+                <div class="row g-3">
+                    
+                    {{-- Título --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Título</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+
+                    {{-- Autor --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Autor</label>
+                        <input type="text" name="author" class="form-control" required>
+                    </div>
+
+                    {{-- Año --}}
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Año</label>
+                        <input type="number" name="year" class="form-control">
+                    </div>
+
+                    {{-- Categoría --}}
+                    <div class="col-md-8">
+                        <label class="form-label fw-semibold">Categoría</label>
+                        <input type="text" name="category" class="form-control">
+                    </div>
+
+                    {{-- Descripción --}}
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Descripción</label>
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    {{-- Portada --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Portada</label>
+                        <input type="file" name="cover_image" class="form-control">
+                    </div>
+
+                    {{-- Cantidad --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Cantidad disponible</label>
+                        <input type="number" name="quantity" min="1" value="1" class="form-control">
+                    </div>
+
                 </div>
 
-                {{-- Autor --}}
-                <div class="mb-3">
-                    <label class="form-label">Autor</label>
-                    <input type="text" name="author" class="form-control" required>
+                <div class="mt-4 text-end">
+                    <button class="btn btn-success px-4">Guardar</button>
                 </div>
-
-                {{-- Año --}}
-                <div class="mb-3">
-                    <label class="form-label">Año</label>
-                    <input type="number" name="year" class="form-control">
-                </div>
-
-                {{-- Categoría --}}
-                <div class="mb-3">
-                    <label class="form-label">Categoría</label>
-                    <input type="text" name="category" class="form-control">
-                </div>
-
-                {{-- Descripción --}}
-                <div class="mb-3">
-                    <label class="form-label">Descripción</label>
-                    <textarea name="description" class="form-control"></textarea>
-                </div>
-
-                {{-- Portada --}}
-                <div class="mb-3">
-                    <label class="form-label">Portada</label>
-                    <input type="file" name="cover_image" class="form-control">
-                </div>
-
-                {{-- Cantidad --}}
-                <div class="mb-3">
-                    <label class="form-label">Cantidad disponible</label>
-                    <input type="number" name="quantity" min="1" value="1" class="form-control">
-                </div>
-
-                <button class="btn btn-success">Guardar</button>
-                <a href="{{ route('admin.books.index') }}" class="btn btn-secondary">Cancelar</a>
 
             </form>
 

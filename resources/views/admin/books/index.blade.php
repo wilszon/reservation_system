@@ -5,11 +5,7 @@
 @section('content')
 <div class="container">
     <h1 class="mb-4">📚 Gestión de Libros</h1>
-
-    <a href="{{ route('admin.books.create') }}" class="btn btn-success mb-3">
-        ➕ Agregar Libro
-    </a>
-
+    
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif

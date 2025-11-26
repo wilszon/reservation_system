@@ -3,67 +3,69 @@
 @section('title', 'Editar Libro')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
 
-    <h1 class="mb-4">✏️ Editar Libro</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">✏️ Editar Libro</h1>
+        <a href="{{ route('admin.books.index') }}" class="btn btn-outline-secondary">⬅ Volver</a>
+    </div>
 
-    <div class="card shadow-sm">
-        <div class="card-body">
+    <div class="card shadow-sm mx-auto" style="max-width: 900px;">
+        <div class="card-body p-4">
 
             <form action="{{ route('admin.books.update', $book) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                {{-- Título --}}
-                <div class="mb-3">
-                    <label class="form-label">Título</label>
-                    <input type="text" name="title" class="form-control" value="{{ $book->title }}" required>
+                <div class="row g-3">
+
+                    {{-- Título --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Título</label>
+                        <input type="text" name="title" class="form-control" value="{{ $book->title }}" required>
+                    </div>
+
+                    {{-- Autor --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Autor</label>
+                        <input type="text" name="author" class="form-control" value="{{ $book->author }}" required>
+                    </div>
+
+                    {{-- Año --}}
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Año</label>
+                        <input type="number" name="year" class="form-control" value="{{ $book->year }}">
+                    </div>
+
+                    {{-- Categoría --}}
+                    <div class="col-md-8">
+                        <label class="form-label fw-semibold">Categoría</label>
+                        <input type="text" name="category" class="form-control" value="{{ $book->category }}">
+                    </div>
+
+                    {{-- Descripción --}}
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Descripción</label>
+                        <textarea name="description" class="form-control" rows="3">{{ $book->description }}</textarea>
+                    </div>
+
+                    {{-- Portada --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Portada (opcional)</label>
+                        <input type="file" name="cover_image" class="form-control">
+                    </div>
+
+                    {{-- Cantidad --}}
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Cantidad disponible</label>
+                        <input type="number" name="quantity" min="1" value="{{ $book->quantity }}" class="form-control">
+                    </div>
+
                 </div>
 
-                {{-- Autor --}}
-                <div class="mb-3">
-                    <label class="form-label">Autor</label>
-                    <input type="text" name="author" class="form-control" value="{{ $book->author }}" required>
+                <div class="mt-4 text-end">
+                    <button class="btn btn-primary px-4">Actualizar</button>
                 </div>
-
-                {{-- Año --}}
-                <div class="mb-3">
-                    <label class="form-label">Año</label>
-                    <input type="number" name="year" class="form-control" value="{{ $book->year }}">
-                </div>
-
-                {{-- Categoría --}}
-                <div class="mb-3">
-                    <label class="form-label">Categoría</label>
-                    <input type="text" name="category" class="form-control" value="{{ $book->category }}">
-                </div>
-
-                {{-- Descripción --}}
-                <div class="mb-3">
-                    <label class="form-label">Descripción</label>
-                    <textarea name="description" class="form-control">{{ $book->description }}</textarea>
-                </div>
-
-                {{-- Imagen actual --}}
-                @if ($book->cover_image)
-                    <p><strong>Portada actual:</strong></p>
-                    <img src="{{ asset('storage/'.$book->cover_image) }}" width="120" class="mb-3 rounded">
-                @endif
-
-                {{-- Nueva imagen --}}
-                <div class="mb-3">
-                    <label class="form-label">Cambiar portada</label>
-                    <input type="file" name="cover_image" class="form-control">
-                </div>
-
-                {{-- Cantidad --}}
-                <div class="mb-3">
-                    <label class="form-label">Cantidad</label>
-                    <input type="number" name="quantity" class="form-control" value="{{ $book->quantity }}">
-                </div>
-
-                <button class="btn btn-primary">Actualizar</button>
-                <a href="{{ route('admin.books.index') }}" class="btn btn-secondary">Cancelar</a>
 
             </form>
 

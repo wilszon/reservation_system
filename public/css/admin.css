@@ -1,0 +1,53 @@
+.sidebar {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #4b0e84, #78155d);
+        color: white;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .sidebar a {
+        color: #fff;
+        width: 100%;
+        text-decoration: none;
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: background 0.2s ease-in-out;
+    }
+
+    .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar i {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+
+    .sidebar-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .logout-btn {
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+.my-table-header {
+    background: linear-gradient(135deg, #4b0e84, #78155d) !important;
+}
+
+.my-table-header th {
+    background: transparent !important;
+    color: white !important;
+}

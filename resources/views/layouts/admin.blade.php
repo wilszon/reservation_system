@@ -9,82 +9,68 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/wlogo.png') }}">
 </head>
 
 <body>
     <div id="app">
 
-        {{-- NAVBAR DEL ADMIN --}}
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('admin.books.index') }}">
-                    🛠️ Sistema de Reservas — Admin
-                </a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 sidebar">
+                    <div class="sidebar-title">
+                        <h2 class="m-0">Panel Admin</h2>
+                        <small>BookReserve</small>
+                    </div>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <div>
+                        <a href="{{ route('admin.reservations.index') }}">
+                            <i class="bi bi-clipboard2-data"></i>
+                            <p>Solicitudes</p>
+                        </a>
 
-                <div class="collapse navbar-collapse" id="navbarAdmin">
+                        <a href="{{ route('admin.books.index') }}">
+                            <i class="bi bi-book"></i>
+                            <p>Mis Libros</p>
+                        </a>
 
-                    {{-- LINKS IZQUIERDA --}}
-                    <ul class="navbar-nav me-auto">
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.books.index') }}">📚 Libros</a>
-                        </li>
+                        <a href="{{ route('admin.books.create') }}">
+                            <i class="bi bi-upload"></i>
+                            <p>Subir Libro</p>
+                        </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">👥 Usuarios</a>
-                        </li>
+                        <a href="{{ route('admin.clients') }}">
+                            <i class="bi bi-people-fill"></i>
+                            <p>Clientes</p>
+                        </a>
+                    </div>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.reservations.index') }}">📖 Reservas</a>
-                        </li>
-
-                    </ul>
-
-                    {{-- LINKS DERECHA --}}
-                    <ul class="navbar-nav ms-auto">
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-end">
-
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Cerrar sesión
-                                    </a>
-                                </li>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-
-                            </ul>
-                        </li>
-
-                    </ul>
+                    <div class="logout-btn text-center">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-outline-light w-100">
+                                Cerrar Sesión
+                            </button>
+                        </form>
+                    </div>
 
                 </div>
 
-            </div>
-        </nav>
+                <div class="col-sm-10 p-4">
+                    @yield('content')
+                </div>
 
-        {{-- CONTENIDO --}}
-        <main class="py-4">
-            @yield('content')
-        </main>
+            </div>
+        </div>
 
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/buscarUser.js') }}"></script>
 
+</body>
+
+</html>
 </body>
 
 </html>
