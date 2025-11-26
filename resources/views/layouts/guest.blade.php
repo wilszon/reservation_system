@@ -28,7 +28,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="btn btn-dark fw-bold text-white rounded-2" href="{{ route('catalog') }}">Catálogo</a></li>
+                    <li class="nav-item"><a class="btn btn-dark fw-bold text-white rounded-2 ms-2" href="{{ route('catalog') }}">Catálogo</a></li>
                     <li class="nav-item"><a class="btn btn-outline-dark fw-bold rounded-2 login-btn ms-2"href="{{ route('login') }}">Iniciar Sesión</a></li>
                     <li class="nav-item"><a class="btn btn-dark fw-bold text-white rounded-2 ms-2" href="{{ route('register') }}">Registrarse</a></li>
                 </ul>

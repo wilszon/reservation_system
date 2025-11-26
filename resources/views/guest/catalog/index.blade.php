@@ -6,39 +6,47 @@
 
     <div class="container">
 
-        <h2 class="mb-4 text-center">📚 Catálogo de Libros</h2>
+        <h2 class="mb-4 text-center fw-bold">📚 Catálogo de Libros</h2>
+
+        <div class="container mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <!-- Aquí va el icono dentro del input group -->
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por título, autor o categoría...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
-
             @forelse ($books as $book)
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-3">
                     <div class="card h-100 shadow-sm book-card">
-
                         @if ($book->cover_image)
-                            <img src="{{ asset('storage/' . $book->cover_image) }}" class="card-img-top book-cover" alt="Portada">
+                            <img src="{{ asset('storage/' . $book->cover_image) }}" class="card-img-top book-cover"
+                                alt="Portada">
                         @else
                             <img src="https://via.placeholder.com/300x400?text=Sin+Imagen" class="card-img-top book-cover">
                         @endif
 
                         <div class="card-body">
                             <h5 class="card-title">{{ $book->title }}</h5>
-                            <p class="card-text text-muted">{{ $book->author }}</p>
-                            <p class="card-text">{{ Str::limit($book->description, 100) }}</p>
-
-                            <span class="badge bg-primary">{{ $book->category ?? 'General' }}</span>
+                            <p class="card-text text-muted">Autor: {{ $book->author }}</p>
+                            <p class="card-text text-muted">Año de publicación: {{ $book->year }}</p>
+                            <span class="badge bg-primary"> Categoría: {{ $book->category ?? 'General' }}</span>
                             <span class="badge bg-success">📦 {{ $book->quantity }} disponibles</span>
                         </div>
-
                     </div>
                 </div>
-
             @empty
 
                 <p class="text-center">No hay libros disponibles todavía.</p>
             @endforelse
-
         </div>
-
     </div>
-
 @endsection

@@ -75,3 +75,30 @@
     font-weight: bold;
     color: #ffffff;
 }
+
+
+/* NAV EN MÓVIL */
+@media (max-width: 991px) {
+
+    /* Centrar todo el contenido del menú */
+    .navbar-nav {
+        width: 100%;
+        text-align: center;
+        padding-top: 0.5rem;
+    }
+
+    /* Cada item ocupa un ancho adecuado y queda centrado */
+    .navbar-nav .nav-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Botones bonitos y con espacio */
+    .navbar-nav .btn {
+        width: 80%;              /* ⬅ más estrechos y centrados = se ven mejor */
+        max-width: 260px;        /* ⬅ evita que queden demasiado grandes */
+        text-align: center;
+    }
+}

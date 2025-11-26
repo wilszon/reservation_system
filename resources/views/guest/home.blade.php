@@ -7,7 +7,7 @@
 <!-- HERO PRINCIPAL -->
 <div class="container-fluid ">
      <div class="p-5 text-center rounded-3 shadow-sm hero-gradient">
-        <h1 class="display-5 fw-bold">Descubre y Reserva tus libros Favoritos</h1>
+        <h1 class="display-5 fw-bold">Descubre y Reserva tus Libros Favoritos</h1>
         <p class="lead mt-3">
             La forma más fácil de reservar libros y gestionar tus préstamos desde un solo lugar.
         </p>
