@@ -1,6 +1,6 @@
 # 📚 Sistema de Gestión de Reservas de Libros
 
-## 🔹 Descripción
+## 📓 Descripción
 Este proyecto es un **sistema de reservas de libros**, desarrollado con **Laravel y PHP**, que permite administrar libros, usuarios y reservas de manera eficiente.  
 Está diseñado con **escalabilidad** para futuros recursos, como películas, revistas u otros ítems reservables.
 
@@ -15,7 +15,7 @@ Está diseñado con **escalabilidad** para futuros recursos, como películas, re
 
 ---
 
-## ⚡ Funcionalidades
+## 🪄 Funcionalidades
 
 ### 👤 Para usuarios
 - Registro y autenticación  
@@ -23,11 +23,11 @@ Está diseñado con **escalabilidad** para futuros recursos, como películas, re
 - Crear, cancelar y consultar reservas  
 
 ### 🏢 Para administración
-- 📊 Dashboard con métricas: libros, usuarios, reservas pendientes/aprobadas  
-- 📚 Gestión completa de libros (CRUD)  
-- 👤 Gestión de usuarios  
-- ✅ Aprobar, rechazar y marcar reservas como devueltas  
-- 🕒 Visualización de últimas reservas y usuarios recientes
+- Dashboard con métricas: libros, usuarios, reservas pendientes/aprobadas  
+- Gestión completa de libros (CRUD)  
+- Gestión de usuarios  
+- Aprobar, rechazar y marcar reservas como devueltas  
+- Visualización de últimas reservas y usuarios recientes
 
 ---
 
