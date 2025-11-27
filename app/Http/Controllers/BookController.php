@@ -47,27 +47,44 @@ class BookController extends Controller
 
     // ADMIN — GUARDAR LIBRO NUEVO
     public function store(Request $request)
-    {   
+    {
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'description' => 'nullable',
-            'year' => 'nullable|digits:4|integer',
-            'category' => 'nullable|string',
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
+            'year' => 'required|integer|min:1000|max:' . date('Y'),
+            'category' => 'required|string',
+            'quantity' => 'required|integer|min:0',
             'cover_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'quantity' => 'required|integer|min:1',
+        ], [
+            'title.required' => 'El título es obligatorio.',
+            'author.required' => 'El autor es obligatorio.',
+            'description.required' => 'La descripción es obligatoria.',
+            'year.required' => 'El año es obligatorio.',
+            'year.integer' => 'El año debe ser un número válido.',
+            'year.min' => 'El año debe ser mayor o igual a 1000.',
+            'year.max' => 'El año no puede ser mayor al año actual.',
+            'category.required' => 'La categoría es obligatoria.',
+            'quantity.required' => 'La cantidad es obligatoria.',
+            'quantity.min' => 'La cantidad no puede ser negativa.',
         ]);
 
         $data = $request->all();
 
-        // GUARDA IMAGEN - FALTA AJUSTARLO...
         if ($request->hasFile('cover_image')) {
             $data['cover_image'] = $request->file('cover_image')->store('covers', 'public');
         }
 
-        Book::create($data);
+        // Aquí metes el try/catch
+        try {
+            Book::create($data);
+            return redirect()->route('admin.books.index')->with('success', 'Libro creado correctamente.');
+        } catch (\Exception $e) {
+            // Opcional: puedes loguear el error para depuración
+            Log::error('Error al crear libro: ' . $e->getMessage());
 
-        return redirect()->route('admin.books.index')->with('success', 'Libro creado correctamente.');
+            return redirect()->back()->with('error', 'No se pudo crear el libro. Intente nuevamente.');
+        }
     }
 
 
@@ -82,25 +99,35 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'description' => 'nullable',
-            'year' => 'nullable|digits:4|integer',
-            'category' => 'nullable|string',
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
+            'year' => 'required|integer|min:1000|max:' . date('Y'),
+            'category' => 'required|string',
+            'quantity' => 'required|integer|min:0',
             'cover_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'quantity' => 'required|integer|min:1',
+        ], [
+            'title.required' => 'El título es obligatorio.',
+            'author.required' => 'El autor es obligatorio.',
+            'description.required' => 'La descripción es obligatoria.',
+            'year.required' => 'El año es obligatorio.',
+            'year.integer' => 'El año debe ser un número válido.',
+            'year.min' => 'El año debe ser mayor o igual a 1000.',
+            'year.max' => 'El año no puede ser mayor al año actual.',
+            'category.required' => 'La categoría es obligatoria.',
+            'quantity.required' => 'La cantidad es obligatoria.',
+            'quantity.min' => 'La cantidad no puede ser negativa.',
         ]);
 
         $data = $request->all();
 
-        // SUBIR IMAGEN SI EXISTE - FALTA AJUSTAR...
         if ($request->hasFile('cover_image')) {
             $data['cover_image'] = $request->file('cover_image')->store('covers', 'public');
         }
 
         $book->update($data);
 
-        return redirect()->route('admin.books.index')->with('success', 'Libro actualizado.');
+        return redirect()->route('admin.books.index')->with('success', 'Libro actualizado correctamente.');
     }
 
 

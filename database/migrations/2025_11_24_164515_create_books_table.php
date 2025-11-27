@@ -13,12 +13,11 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('author');
-            $table->text('description')->nullable();
-            $table->integer('year')->nullable();
-            $table->string('category')->nullable();
+            $table->text('description');
+            $table->integer('year');
+            $table->string('category');
             $table->string('cover_image')->nullable(); // URL de imagen
-            $table->integer('quantity')->default(1);
-
+            $table->integer('quantity')->default(0);
             $table->timestamps();
         });
     }
