@@ -28,3 +28,26 @@ Está diseñado con **escalabilidad** para futuros recursos, como películas, re
 - 👤 Gestión de usuarios  
 - ✅ Aprobar, rechazar y marcar reservas como devueltas  
 - 🕒 Visualización de últimas reservas y usuarios recientes
+
+---
+
+## 🌱 Escalabilidad Futura 
+- **Integrar otros recursos como peliculas, videojuegos, objetos deportivos. 
+- **Reportes y estadísticas avanzadas 
+- **Integración con notificaciones o pagos
+---
+
+## 📺 Visualizacion de la aplicación
+### 🏠 Pantalla de Inicio 
+<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/d9684ce7-fdcf-44ff-8185-0eafc8ddba95" />
+
+### 🏠 Dashboard de Administración
+<img width="1919" height="870" alt="image" src="https://github.com/user-attachments/assets/872adb05-f3ca-495c-a4a8-4ce81ba682a9" />
+
+### 🏠 Dashboard del Usuario
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/4c294812-d6f5-4c7d-baad-f4a2a428829c" />
+
+
+
+
+
