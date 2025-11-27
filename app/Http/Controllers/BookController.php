@@ -47,7 +47,7 @@ class BookController extends Controller
 
     // ADMIN — GUARDAR LIBRO NUEVO
     public function store(Request $request)
-    {
+    {   
         $request->validate([
             'title' => 'required',
             'author' => 'required',

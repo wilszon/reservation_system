@@ -51,17 +51,60 @@
                             <span class="badge bg-success">📦 {{ $book->quantity }} disponibles</span>
 
                             <div class="mt-3">
-                                <a href="{{ route('user.reservations.create', $book->id) }}"
-                                    class="btn btn-outline-primary w-100">Reservar 📖</a>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            @empty
-                <p class="text-center">No hay libros disponibles todavía.</p>
-            @endforelse
+                                @foreach ($books as $book)
+                                    @php
+                                        $reservation = \App\Models\Reservation::where('user_id', auth()->id())
+                                            ->where('book_id', $book->id)
+                                            ->whereIn('status', ['pendiente', 'aprobada'])
+                                            ->first();
+                                    @endphp
+
+                                    <div class="mt-3">
+                                        @if ($reservation)
+                                            {{-- RESERVA PENDIENTE --}}
+                                            @if ($reservation->status == 'pendiente')
+                                                <button class="btn btn-warning w-100 disabled">
+                                                    En espera de aprobación ⏳
+                                                </button>
+
+                                                {{-- RESERVA APROBADA --}}
+                                            @elseif ($reservation->status == 'aprobada')
+                                                <button class="btn btn-success w-100 disabled">
+                                                    Reserva Aceptada ✔️
+                                                </button>
+
+                                                {{-- OPCIONAL: botón para ver mis reservas --}}
+                                                <a href="{{ route('user.reservations') }}"
+                                                    class="btn btn-outline-primary w-100 mt-2">
+                                                    Ver mi reserva 📚
+                                                </a>
+                                            @endif
+                                        @elseif ($book->quantity <= 0)
+                                            {{-- SIN STOCK --}}
+                                            <button class="btn btn-secondary w-100 disabled">
+                                                No Disponible 🚫
+                                            </button>
+                                        @else
+                                            {{-- DISPONIBLE PARA RESERVAR --}}
+                                            <a href="{{ route('user.reservations.create', $book->id) }}"
+                                                class="btn btn-outline-primary w-100">
+                                                Reservar 📖
+                                            </a>
+                                        @endif
+                                    </div>
+                            </div>
+            @endforeach
+
         </div>
+    </div>
+
+    </div>
+    </div>
+@empty
+    <p class="text-center">No hay libros disponibles todavía.</p>
+    @endforelse
+    </div>
 
     </div>
 

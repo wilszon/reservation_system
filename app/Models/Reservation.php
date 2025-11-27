@@ -11,6 +11,9 @@ class Reservation extends Model
         'book_id',
         'status',
         'reserved_at',
+        'start_date',
+        'end_date',
+        'observations',
     ];
 
     // RELACIÓN: Una reserva pertenece a un usuario

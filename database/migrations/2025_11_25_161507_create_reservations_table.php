@@ -13,10 +13,23 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+
+            // Relaciones
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['pendiente', 'aprobada', 'rechazada'])->default('pendiente');
-            $table->date('reserved_at')->nullable();
+
+            // Estado de la reserva
+            $table->enum('status', ['pendiente', 'aprobada', 'rechazada', 'devuelta'])
+                ->default('pendiente');
+
+            // Fechas
+            $table->date('start_date');    // Fecha de préstamo
+            $table->date('end_date');      // Fecha de devolución
+            $table->date('reserved_at')->nullable(); // Fecha en que se hizo la reserva
+
+            // Observaciones
+            $table->text('observations')->nullable();
+
             $table->timestamps();
         });
     }

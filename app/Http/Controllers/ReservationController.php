@@ -7,7 +7,7 @@ use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
-    public function store(Request $request, $book_id)
+    public function store(Request $request)
     {
         $request->validate([
             'book_id' => 'required|exists:books,id',
@@ -16,6 +16,17 @@ class ReservationController extends Controller
             'observations' => 'nullable|string|max:255',
         ]);
 
+
+        $existing = Reservation::where('user_id', auth()->id())
+            ->where('book_id', $request->book_id)
+            ->whereIn('status', ['pendiente', 'aprobada'])
+            ->first();
+
+        if ($existing) {
+            return back()->with('error', 'Ya tienes una reserva activa para este libro.');
+        }
+
+        // Crear reserva
         Reservation::create([
             'user_id' => auth()->id(),
             'book_id' => $request->book_id,
@@ -23,11 +34,11 @@ class ReservationController extends Controller
             'end_date' => $request->end_date,
             'observations' => $request->observations,
             'status' => 'pendiente',
-            'reserved_at' => now(),
         ]);
 
-        return redirect()->route('user.reservations')
-            ->with('success', 'Reserva enviada. Espera aprobación.');
+        return redirect()
+            ->route('user.reservations.create', $request->book_id)
+            ->with('success', 'La reserva se ha enviado correctamente, espere que el administrador la apruebe.');
     }
 
     public function index()
@@ -40,9 +51,15 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
 
-        // Descontar libro
+        // Verificar disponibilidad del libro
+        if ($reservation->book->quantity <= 0) {
+            return back()->with('error', 'No hay ejemplares disponibles para aprobar esta reserva.');
+        }
+
+        // Descontar un ejemplar del libro
         $reservation->book->decrement('quantity');
 
+        // Cambiar estado de la reserva a aprobada
         $reservation->update(['status' => 'aprobada']);
 
         return back()->with('success', 'Reserva aprobada.');
@@ -50,7 +67,9 @@ class ReservationController extends Controller
 
     public function reject($id)
     {
-        Reservation::findOrFail($id)->update(['status' => 'rechazada']);
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->update(['status' => 'rechazada']);
 
         return back()->with('success', 'Reserva rechazada.');
     }
@@ -87,5 +106,22 @@ class ReservationController extends Controller
         $book = \App\Models\Book::findOrFail($book_id);
 
         return view('user.reservations.create', compact('book'));
+    }
+
+    public function markAsReturned($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        if ($reservation->status !== 'aprobada') {
+            return back()->with('error', 'Solo se pueden marcar como devueltas las reservas aprobadas.');
+        }
+
+        $reservation->status = 'devuelta';
+        $reservation->save();
+
+        // Sumar disponibilidad al libro
+        $reservation->book->increment('quantity');
+
+        return back()->with('success', '📘 El libro ha sido marcado como devuelto y la disponibilidad fue actualizada.');
     }
 }

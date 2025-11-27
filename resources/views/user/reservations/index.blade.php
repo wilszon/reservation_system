@@ -31,8 +31,12 @@
                                 <span class="badge bg-warning">Pendiente</span>
                             @elseif($res->status == 'aprobada')
                                 <span class="badge bg-success">Aprobada</span>
-                            @else
+                            @elseif($res->status == 'devuelta')
+                                <span class="badge bg-primary">Devuelto</span>
+                            @elseif($res->status == 'rechazada')
                                 <span class="badge bg-danger">Rechazada</span>
+                            @else
+                                <span class="badge bg-secondary">Desconocido</span>
                             @endif
                         </td>
                     </tr>

@@ -26,8 +26,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/user/catalog', [BookController::class, 'userCatalog'])->name('user.catalog');
 
-    Route::post('/reserve/{book}', [ReservationController::class, 'store'])->name('reserve.book');
-
     Route::post('/reserve/{book}/cancel', [ReservationController::class, 'cancel'])->name('reserve.cancel');
 
     Route::get('/user/reservations', [ReservationController::class, 'userReservations'])
@@ -73,6 +71,9 @@ Route::prefix('admin')
         Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
         Route::post('/reservations/{id}/approve', [ReservationController::class, 'approve'])->name('reservations.approve');
         Route::post('/reservations/{id}/reject', [ReservationController::class, 'reject'])->name('reservations.reject');
+        Route::patch('/reservations/{id}/return', [ReservationController::class, 'markAsReturned'])
+            ->name('reservations.return');
+
 
         // Clientes
         Route::get('/clients', [ClientController::class, 'index'])->name('clients');

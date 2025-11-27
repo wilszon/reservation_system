@@ -15,6 +15,7 @@
                         <th>Fecha de Préstamo</th>
                         <th>Observaciones</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
 
@@ -26,12 +27,12 @@
                             <td>{{ $r->book->title }}</td>
 
                             {{-- Fecha de préstamo --}}
-                            <td>
-                                {{ $r->reserved_at ? \Carbon\Carbon::parse($r->reserved_at)->format('d/m/Y') : $r->created_at->format('d/m/Y') }}
+                            <td>{{ \Carbon\Carbon::parse($r->start_date)->format('d/m/Y') }} -
+                                {{ \Carbon\Carbon::parse($r->end_date)->format('d/m/Y') }}
                             </td>
 
-                            {{-- Observaciones (NO EXISTE EN EL MODELO, así que queda vacío) --}}
-                            <td>—</td>
+                            {{-- Observaciones --}}
+                            <td>{{ $r->observations ?? '—' }}</td>
 
                             {{-- Estado --}}
                             <td>
@@ -39,9 +40,52 @@
                                     <span class="badge bg-warning text-dark">Pendiente</span>
                                 @elseif ($r->status == 'aprobada')
                                     <span class="badge bg-success">Aprobada</span>
+                                @elseif ($r->status == 'devuelta')
+                                    <span class="badge bg-primary">Devuelto</span>
                                 @else
                                     <span class="badge bg-danger">Rechazada</span>
                                 @endif
+                            </td>
+
+                            {{-- Acciones --}}
+                            <td>
+
+                                @if ($r->status == 'pendiente')
+                                    {{-- Botón aprobar --}}
+                                    <form action="{{ route('admin.reservations.approve', $r->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        <button class="btn btn-success btn-sm">
+                                            <i class="bi bi-check2-circle"></i> Aprobar
+                                        </button>
+                                    </form>
+
+                                    {{-- Botón rechazar --}}
+                                    <form action="{{ route('admin.reservations.reject', $r->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="bi bi-x-circle"></i> Rechazar
+                                        </button>
+                                    </form>
+                                @endif
+
+                                @if ($r->status == 'aprobada')
+                                    {{-- Botón marcar como devuelto --}}
+                                    <form action="{{ route('admin.reservations.return', $r->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="btn btn-primary btn-sm">
+                                            <i class="bi bi-arrow-counterclockwise"></i> Marcar devuelto
+                                        </button>
+                                    </form>
+                                @endif
+
+                                @if ($r->status == 'rechazada' || $r->status == 'devuelta')
+                                    <em>No disponible</em>
+                                @endif
+
                             </td>
                         </tr>
                     @empty
