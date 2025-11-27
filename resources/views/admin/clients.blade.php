@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
 
-    <h1 class="mb-4"><i class="bi bi-people-fill"></i> Usuarios Registrados</h1>
+    <h2 class="mb-4 fw-bold"><i class="bi bi-people-fill"></i> Usuarios Registrados</h1>
 
     <!-- Buscador -->
     <form method="GET" action="{{ route('admin.clients') }}" class="mb-3">

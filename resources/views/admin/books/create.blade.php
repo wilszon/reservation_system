@@ -6,7 +6,7 @@
     <div class="container py-4">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="fw-bold">➕ Agregar Libro</h1>
+            <h2 class="fw-bold">➕ Agregar Libro</h2>
             <a href="{{ route('admin.books.index') }}" class="btn btn-outline-secondary">⬅ Volver</a>
         </div>
 
