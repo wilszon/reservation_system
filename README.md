@@ -18,9 +18,9 @@ Está diseñado con **escalabilidad** para futuros recursos, como películas, re
 ## ⚡ Funcionalidades
 
 ### 👤 Para usuarios
-- 🔹 Registro y autenticación  
-- 🔹 Visualización del catálogo de libros  
-- 🔹 Crear, cancelar y consultar reservas  
+- Registro y autenticación  
+- Visualización del catálogo de libros  
+- Crear, cancelar y consultar reservas  
 
 ### 🏢 Para administración
 - 📊 Dashboard con métricas: libros, usuarios, reservas pendientes/aprobadas  
@@ -32,9 +32,9 @@ Está diseñado con **escalabilidad** para futuros recursos, como películas, re
 ---
 
 ## 🌱 Escalabilidad Futura 
-- **Integrar otros recursos como peliculas, videojuegos, objetos deportivos. 
-- **Reportes y estadísticas avanzadas 
-- **Integración con notificaciones o pagos
+- Integrar otros recursos como peliculas, videojuegos, objetos deportivos. 
+- Reportes y estadísticas avanzadas 
+- Integración con notificaciones o pagos
 ---
 
 ## 📺 Visualizacion de la aplicación
