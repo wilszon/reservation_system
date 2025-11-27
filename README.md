@@ -4,6 +4,8 @@
 Este proyecto es un **sistema de reservas de libros**, desarrollado con **Laravel y PHP**, que permite administrar libros, usuarios y reservas de manera eficiente.  
 Está diseñado con **escalabilidad** para futuros recursos, como películas, revistas u otros ítems reservables.
 
+---
+
 ## 🛠 Tecnologías
 - **Backend:** PHP 8.2.12, Laravel Framework 12.39.0  
 - **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5  
